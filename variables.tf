@@ -37,3 +37,8 @@ variable "Instance_type" {
     default = "t2.micro"
     description = "Set instance type t2.micro seems sufficient"
 }
+
+variable "IP_Address" {
+    default = "0.0.0.0/0"
+    description = "IP_Address to restrict traffic to"
+}
