@@ -35,7 +35,7 @@ resource "aws_security_group" "ExfilTracer_SG" {
         from_port = 21
         to_port = 21
         protocol = "tcp"
-        cidr_blocks = ["${IP_Address}"]
+        cidr_blocks = ["${var.IP_Address}"]
     }
     ingress {
         from_port = 22
