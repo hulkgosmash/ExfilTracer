@@ -1,0 +1,30 @@
+---
+- name: Install vsftpd package
+  apt:
+    name: vsftpd
+    state: present
+
+- name: Enable write access in vsftpd configuration
+  lineinfile:
+    path: /etc/vsftpd.conf
+    line: "write_enable=YES"
+    insertafter: EOF
+
+- name: Set generic directory for users to be /tmp
+  lineinfile:
+    path: /etc/vsftpd.conf
+    line: "local_root=/tmp"
+    insertafter: EOF
+
+- name: Create a new user
+  user:
+    name: ftpuser  # Replace with the desired username
+    password: "{{ password | password_hash('sha512') }}"  # Replace 'your_password' with the desired password
+    groups: ftp  # Optionally, specify additional groups for the user
+    shell: /bin/bash  # Optionally, specify the shell for the user (default is /bin/sh)
+    createhome: yes  # Optionally, create a home directory for the user
+
+- name: Restart vsftpd service
+  service:
+    name: vsftpd
+    state: restarted

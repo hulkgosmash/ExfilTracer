@@ -1,0 +1,41 @@
+<?php
+$target_dir = "uploads/";
+$uploadOk = 1;
+
+// Generate a unique name for the file to prevent overwriting
+$target_file = $target_dir . uniqid() . "-" . basename($_FILES["fileToUpload"]["name"]);
+
+// Check if file is selected
+if (!isset($_FILES["fileToUpload"]["tmp_name"]) || $_FILES["fileToUpload"]["tmp_name"] == '') {
+    echo "No file selected.";
+    $uploadOk = 0;
+}
+
+// Check file size (5MB maximum)
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+} else {
+    // Try to upload file
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded to /uploads directory.";
+    } else {
+        // Capture and display detailed error information
+        $error = error_get_last();
+        echo "Sorry, there was an error uploading your file. Error: " . print_r($error, true);
+
+        // Additional diagnostic information
+        echo "<br>Target directory: " . realpath($target_dir);
+        echo "<br>Target file: " . $target_file;
+        echo "<br>Is target directory writable? " . (is_writable($target_dir) ? "Yes" : "No");
+        echo "<br>Is target directory executable? " . (is_executable($target_dir) ? "Yes" : "No");
+        echo "<br>Temporary file: " . $_FILES["fileToUpload"]["tmp_name"];
+        echo "<br>Is temporary file readable? " . (is_readable($_FILES["fileToUpload"]["tmp_name"]) ? "Yes" : "No");
+    }
+}
+?>

@@ -1,0 +1,59 @@
+# roles/rdp_server/tasks/main.yml
+
+---
+- name: Install XFCE desktop environment
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - xfce4
+    - xfce4-goodies
+
+- name: Install xrdp
+  apt:
+    name: xrdp
+    state: present
+
+- name: Configure xrdp to use XFCE
+  copy:
+    dest: /etc/xrdp/startwm.sh
+    content: |
+      #!/bin/sh
+      if [ -r /etc/default/locale ]; then
+        . /etc/default/locale
+        export LANG LANGUAGE
+      fi
+      startxfce4
+
+- name: Enable and start xrdp service
+  systemd:
+    name: xrdp
+    enabled: yes
+    state: started
+
+- name: Allow RDP through the firewall
+  ufw:
+    rule: allow
+    port: 3389
+    proto: tcp
+
+- name: Ensure xrdp user can use XFCE
+  lineinfile:
+    path: /etc/xrdp/startwm.sh
+    insertafter: /fi/
+    line: "startxfce4"
+    state: present
+
+- name: Restart xrdp service
+  systemd:
+    name: xrdp
+    state: restarted
+  when: "ansible_distribution == 'Ubuntu'"
+
+- name: Create a new user
+  user:
+    name: rdpuser  # Replace with the desired username
+    password: "{{ password | password_hash('sha512') }}"  # Replace 'your_password' with the desired password
+    groups: ftp  # Optionally, specify additional groups for the user
+    shell: /bin/bash  # Optionally, specify the shell for the user (default is /bin/sh)
+    createhome: yes  # Optionally, create a home directory for the user

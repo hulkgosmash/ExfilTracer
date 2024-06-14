@@ -1,0 +1,3 @@
+---
+smtp_hostname: "smtp.example.com"
+smtp_domain: "example.com"

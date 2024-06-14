@@ -1,0 +1,14 @@
+# Ansible managed
+
+myhostname = {{ smtp_hostname }}
+mydomain = {{ smtp_domain }}
+myorigin = $mydomain
+inet_interfaces = all
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+relay_domains = $mydestination
+mynetworks = 127.0.0.0/8
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_protocols = all
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination

@@ -1,0 +1,16 @@
+---
+- name: Install and configure FTP Server
+  hosts: localhost
+  become: yes
+  roles:
+    - role: dns_server
+    - role: ftp_server
+    - role: http_server
+    - role: rdp_server
+    - role: smb_server
+    - role: smtp_server
+
+  tasks:
+    - name: Print the command line variable
+      ansible.builtin.debug:
+        msg: "The password specified is: {{ password }}"

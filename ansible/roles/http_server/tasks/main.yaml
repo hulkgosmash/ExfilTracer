@@ -1,0 +1,50 @@
+---
+- name: Install Apache and PHP
+  apt:
+    name: 
+      - apache2
+      - libapache2-mod-php
+      - php
+      - php-cli
+      - php-fpm
+      - php-mysql
+    state: present
+
+- name: Get installed PHP version
+  command: php -r 'echo PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;'
+  register: php_version
+  changed_when: false
+
+- name: Enable Apache mod_php
+  command: "a2enmod php{{ php_version.stdout }}"
+  notify: Restart Apache
+
+- name: Restart Apache to apply changes
+  service:
+    name: apache2
+    state: restarted
+    enabled: yes
+
+- name: Copy index.html template
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Apache
+
+- name: Copy upload.php template
+  ansible.builtin.template:
+    src: upload.php.j2
+    dest: /var/www/html/upload.php
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Apache
+
+- name: Create /var/www/html/uploads directory
+  ansible.builtin.file:
+    path: /var/www/html/uploads
+    state: directory
+    mode: '0777'

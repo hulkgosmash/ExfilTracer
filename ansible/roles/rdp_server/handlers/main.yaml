@@ -1,0 +1,7 @@
+# roles/rdp_server/handlers/main.yml
+
+---
+- name: Restart xrdp
+  systemd:
+    name: xrdp
+    state: restarted
