@@ -4,18 +4,6 @@
     name: vsftpd
     state: present
 
-- name: Enable write access in vsftpd configuration
-  lineinfile:
-    path: /etc/vsftpd.conf
-    line: "write_enable=YES"
-    insertafter: EOF
-
-- name: Set generic directory for users to be /tmp
-  lineinfile:
-    path: /etc/vsftpd.conf
-    line: "local_root=/tmp"
-    insertafter: EOF
-
 - name: Create a new user
   user:
     name: ftpuser  # Replace with the desired username
@@ -23,6 +11,24 @@
     groups: ftp  # Optionally, specify additional groups for the user
     shell: /bin/bash  # Optionally, specify the shell for the user (default is /bin/sh)
     createhome: yes  # Optionally, create a home directory for the user
+
+- name: Set permissions on /home/ftpuser
+  file:
+    path: /home/ftpuser
+    state: directory
+    mode: '0777'
+
+- name: Append lines to a file
+  blockinfile:
+    path: /etc/vsftpd.conf
+    block: |
+      write_enable=YES
+      local_root=/home/ftpuser
+      pasv_enable=YES
+      pasv_min_port=10000
+      pasv_max_port=10100
+      Line 3
+    insertafter: EOF
 
 - name: Restart vsftpd service
   service:
