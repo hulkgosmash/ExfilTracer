@@ -42,3 +42,8 @@ variable "IP_Address" {
     default = "0.0.0.0/0"
     description = "IP_Address to restrict traffic to"
 }
+
+variable "Password" {
+    default = "P@ssw0rd"
+    description = "IP_Address to restrict traffic to"
+}

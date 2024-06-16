@@ -16,7 +16,7 @@ resource "aws_instance" "ExfilTracer" {
             "sudo apt update",
             "sudo apt install ansible -y",
             "git clone https://github.com/hulkgosmash/ExfilTracer.git",
-            "ansible-playbook ExfilTracer/ansible/main.yaml -e password='P@ssw0rd'",
+            "ansible-playbook ExfilTracer/ansible/main.yaml -e password='${var.Password}'",
         ]
     }
     tags                          = {
