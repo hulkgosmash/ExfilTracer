@@ -3,7 +3,6 @@
   hosts: localhost
   become: yes
   roles:
-    - role: dns_server
     - role: ftp_server
     - role: http_server
     - role: rdp_server
