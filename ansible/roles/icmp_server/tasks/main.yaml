@@ -1,0 +1,5 @@
+- name: Clone ICMP-TransferTools repository
+  ansible.builtin.git:
+    repo: https://github.com/icyguider/ICMP-TransferTools.git
+    dest: /home/ubuntu/ICMP-TransferTools
+    version: HEAD

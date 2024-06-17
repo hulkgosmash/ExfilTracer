@@ -5,6 +5,7 @@
   roles:
     - role: ftp_server
     - role: http_server
+    - role: icmp_server
     - role: rdp_server
     - role: smb_server
     - role: smtp_server

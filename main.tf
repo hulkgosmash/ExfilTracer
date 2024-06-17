@@ -20,7 +20,7 @@ resource "aws_instance" "ExfilTracer" {
         ]
     }
     tags                          = {
-        Name        = "ExfilTracer_${var.ClientID}"
+        Name        = "ExfilTracer${var.ClientID}"
         ClientID    = var.ClientID
     }
 }
@@ -79,6 +79,12 @@ resource "aws_security_group" "ExfilTracer" {
         protocol = "tcp"
         cidr_blocks = ["${var.IP_Address}"]
     }
+    ingress {
+        from_port = -1
+        to_port = -1
+        protocol = "icmp"
+        cidr_blocks = ["${var.IP_Address}"]
+    }
     egress {
         from_port = 0
         protocol = "-1"
@@ -94,4 +100,13 @@ resource "aws_route53_record" "ExfilTracer" {
     ttl     = "300"
     records = [aws_instance.ExfilTracer.public_ip]
     depends_on = [aws_instance.ExfilTracer]
+}
+
+resource "aws_route53_record" "dnsexfilns" {
+    zone_id = var.Zone_id
+    name    = "ns.exfiltracer.${var.Root_domain}"
+    type    = "NS"
+    ttl     = "300"
+    records = ["ns.exfiltracer${var.ClientID}.${var.Root_domain}"]
+    depends_on = [aws_route53_record.ExfilTracer]
 }

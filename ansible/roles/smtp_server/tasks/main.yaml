@@ -3,6 +3,10 @@
   ansible.builtin.package:
     name: postfix
     state: present
+- name: Install vsftpd package
+  apt:
+    name: ripmime
+    state: present
 
 - name: Ensure Postfix is configured
   ansible.builtin.template:
