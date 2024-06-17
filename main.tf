@@ -89,7 +89,7 @@ resource "aws_security_group" "ExfilTracer" {
 
 resource "aws_route53_record" "ExfilTracer" {
     zone_id = var.Zone_id
-    name    = "ExfilTracer${var.ClientID}.${var.Root_domain}"
+    name    = "exfiltracer${var.ClientID}.${var.Root_domain}"
     type    = "A"
     ttl     = "300"
     records = [aws_instance.ExfilTracer.public_ip]
