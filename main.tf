@@ -2,8 +2,8 @@ resource "aws_instance" "ExfilTracer" {
     ami             = var.AMI
     instance_type   = var.Instance_type
     key_name = var.Key_name
-    depends_on = [aws_security_group.ExfilTracer_SG]
-    security_groups = ["ExfilTracer_SG_${var.ClientID}"]
+    depends_on = [aws_security_group.ExfilTracer]
+    security_groups = ["ExfilTracer${var.ClientID}"]
     connection {
         host = aws_instance.ExfilTracer.public_ip
         type = "ssh"
@@ -25,10 +25,10 @@ resource "aws_instance" "ExfilTracer" {
     }
 }
 
-resource "aws_security_group" "ExfilTracer_SG" {
-    name = "ExfilTracer_SG_${var.ClientID}"
+resource "aws_security_group" "ExfilTracer" {
+    name = "ExfilTracer${var.ClientID}"
     tags                          = {
-        Name        = "ExfilTracer_SG_${var.ClientID}"
+        Name        = "ExfilTracer${var.ClientID}"
         ClientID    = var.ClientID
     }
     ingress {
@@ -53,7 +53,7 @@ resource "aws_security_group" "ExfilTracer_SG" {
         from_port = 53
         to_port = 53
         protocol = "udp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["0.0.0.0/0"]
     }
     ingress {
         from_port = 80
@@ -87,19 +87,11 @@ resource "aws_security_group" "ExfilTracer_SG" {
     }
 }
 
-resource "aws_route53_record" "dnsexfil" {
+resource "aws_route53_record" "ExfilTracer" {
     zone_id = var.Zone_id
-    name    = "exfil.${var.Root_domain}"
+    name    = "ExfilTracer${var.ClientID}.${var.Root_domain}"
     type    = "A"
     ttl     = "300"
     records = [aws_instance.ExfilTracer.public_ip]
     depends_on = [aws_instance.ExfilTracer]
-}
-resource "aws_route53_record" "dnsexfilns" {
-    zone_id = var.Zone_id
-    name    = "exfilns.${var.Root_domain}"
-    type    = "NS"
-    ttl     = "300"
-    records = ["exfil.${var.Root_domain}"]
-    depends_on = [aws_route53_record.dnsexfil]
 }
