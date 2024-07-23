@@ -97,7 +97,6 @@ resource "aws_security_group" "ExfilTracer" {
 }
 
 resource "aws_route53_record" "ExfilTracer" {
-    #zone_id = var.Zone_id
     zone_id = data.aws_route53_zone.selected.zone_id
     name    = "exfiltracer${var.ClientID}.${var.Root_domain}"
     type    = "A"
@@ -107,7 +106,6 @@ resource "aws_route53_record" "ExfilTracer" {
 }
 
 resource "aws_route53_record" "dnsexfilns" {
-    #zone_id = var.Zone_id
     zone_id = data.aws_route53_zone.selected.zone_id
     name    = "ns.exfiltracer.${var.Root_domain}"
     type    = "NS"
