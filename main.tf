@@ -1,17 +1,27 @@
 data "aws_route53_zone" "selected" {
   name = var.Root_domain
 }
+
+data "local_file" "public_key" {
+  filename = var.public_key_path
+}
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = data.local_file.public_key.content
+}
+
 resource "aws_instance" "ExfilTracer" {
     ami             = var.AMI
     instance_type   = var.Instance_type
-    key_name = var.Key_name
-    depends_on = [aws_security_group.ExfilTracer]
+    key_name        = aws_key_pair.deployer.key_name
+    depends_on      = [aws_security_group.ExfilTracer]
     security_groups = ["ExfilTracer${var.ClientID}"]
     connection {
         host = aws_instance.ExfilTracer.public_ip
         type = "ssh"
         user = "ubuntu"
-        private_key = file(var.Private_key)
+        private_key = file(var.private_key_path)
     }
     provisioner "remote-exec" {
         inline = [

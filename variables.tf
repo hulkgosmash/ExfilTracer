@@ -8,14 +8,16 @@ variable "ClientID" {
     description = "Unique Client ID to differentiate resources"
 }
 
-variable "Key_name" {
-    default = "hulk"
-    description = "SSH Key"
+variable "public_key_path" {
+  description = "Path to the public key file"
+  type        = string
+  default     = "/home/kali/.ssh/id_rsa.pub"
 }
 
-variable "Private_key" {
-    default = "hulk.pem"
-    description = "Private key file location"
+variable "private_key_path" {
+  description = "Path to the private key file"
+  type        = string
+  default     = "/home/kali/.ssh/id_rsa"
 }
 
 variable "Root_domain" {

@@ -1,5 +1,5 @@
 output "A_Connect_to_instance_with" {
-  value = "ssh -i ${var.Private_key} ubuntu@exfiltracer${var.ClientID}.${var.Root_domain}"
+  value = "ssh ubuntu@exfiltracer${var.ClientID}.${var.Root_domain}"
   description = "Test the description field"
 }
 output "B_IP_Address" {
