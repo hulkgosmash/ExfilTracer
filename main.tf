@@ -1,3 +1,6 @@
+data "aws_route53_zone" "selected" {
+  name = var.Root_domain
+}
 resource "aws_instance" "ExfilTracer" {
     ami             = var.AMI
     instance_type   = var.Instance_type
@@ -94,7 +97,8 @@ resource "aws_security_group" "ExfilTracer" {
 }
 
 resource "aws_route53_record" "ExfilTracer" {
-    zone_id = var.Zone_id
+    #zone_id = var.Zone_id
+    zone_id = data.aws_route53_zone.selected.zone_id
     name    = "exfiltracer${var.ClientID}.${var.Root_domain}"
     type    = "A"
     ttl     = "300"
@@ -103,7 +107,8 @@ resource "aws_route53_record" "ExfilTracer" {
 }
 
 resource "aws_route53_record" "dnsexfilns" {
-    zone_id = var.Zone_id
+    #zone_id = var.Zone_id
+    zone_id = data.aws_route53_zone.selected.zone_id
     name    = "ns.exfiltracer.${var.Root_domain}"
     type    = "NS"
     ttl     = "300"

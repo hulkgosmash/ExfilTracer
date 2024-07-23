@@ -13,10 +13,10 @@ variable "Key_name" {
     description = "SSH Key"
 }
 
-variable "Zone_id" {
-    default = "Z0789527ZNPTVU7DAVNZ"
-    description = "Zone ID"
-}
+#variable "Zone_id" {
+#    default = "Z0789527ZNPTVU7DAVNZ"
+#    description = "Zone ID"
+#}
 
 variable "Private_key" {
     default = "hulk.pem"
