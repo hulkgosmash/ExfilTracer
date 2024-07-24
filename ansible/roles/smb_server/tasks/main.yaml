@@ -5,7 +5,7 @@
 
 - name: Move smb.conf to smb.conf.old
   ansible.builtin.command:
-    cmd: mv /etc/samba/smb.conf /etc/samba/smb.conf.old
+    _raw_params: mv /etc/samba/smb.conf /etc/samba/smb.conf.old
   args:
     creates: /etc/samba/smb.conf.old
 
