@@ -25,10 +25,10 @@ variable "Root_domain" {
     description = "Root Domain"
 }
 
-variable "AMI" {
-    default = "ami-076fe60835f136dc9"
-    description = "AMI ID for your region (Only tested with Ubuntu 22.04 64-bit(x86)"
-}
+#variable "AMI" {
+#    default = "ami-076fe60835f136dc9"
+#    description = "AMI ID for your region (Only tested with Ubuntu 22.04 64-bit(x86)"
+#}
 
 variable "Instance_type" {
     default = "t2.micro"

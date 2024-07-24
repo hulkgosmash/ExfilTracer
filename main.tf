@@ -6,13 +6,29 @@ data "local_file" "public_key" {
   filename = var.public_key_path
 }
 
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"]  # Canonical's AWS account ID
+}
+
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
   public_key = data.local_file.public_key.content
 }
 
 resource "aws_instance" "ExfilTracer" {
-    ami             = var.AMI
+    ami             = data.aws_ami.ubuntu.id
     instance_type   = var.Instance_type
     key_name        = aws_key_pair.deployer.key_name
     depends_on      = [aws_security_group.ExfilTracer]
