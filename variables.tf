@@ -42,5 +42,5 @@ variable "IP_Address" {
 
 variable "Password" {
     default = "P@ssw0rd"
-    description = "IP_Address to restrict traffic to"
+    description = "Password for all of the protocols / services"
 }
