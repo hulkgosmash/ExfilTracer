@@ -4,7 +4,7 @@ variable "region" {
 }
 
 variable "ClientID" {
-    default = "ClientID"
+    default = "123"
     description = "Unique Client ID to differentiate resources"
 }
 
