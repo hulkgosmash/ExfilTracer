@@ -29,10 +29,10 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_instance" "ExfilTracer" {
     ami             = data.aws_ami.ubuntu.id
-    instance_type   = var.Instance_type
+    instance_type   = var.instance_type
     key_name        = aws_key_pair.deployer.key_name
     depends_on      = [aws_security_group.ExfilTracer]
-    security_groups = ["ExfilTracer${var.ClientID}"]
+    security_groups = ["ExfilTracer${var.client_ID}"]
     connection {
         host = aws_instance.ExfilTracer.public_ip
         type = "ssh"
@@ -49,22 +49,22 @@ resource "aws_instance" "ExfilTracer" {
         ]
     }
     tags                          = {
-        Name        = "ExfilTracer${var.ClientID}"
-        ClientID    = var.ClientID
+        Name        = "ExfilTracer${var.client_ID}"
+        client_ID    = var.client_ID
     }
 }
 
 resource "aws_security_group" "ExfilTracer" {
-    name = "ExfilTracer${var.ClientID}"
+    name = "ExfilTracer${var.client_ID}"
     tags                          = {
-        Name        = "ExfilTracer${var.ClientID}"
-        ClientID    = var.ClientID
+        Name        = "ExfilTracer${var.client_ID}"
+        client_ID    = var.client_ID
     }
     ingress {
         from_port = 21
         to_port = 21
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = 22
@@ -76,7 +76,7 @@ resource "aws_security_group" "ExfilTracer" {
         from_port = 25
         to_port = 25
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = 53
@@ -88,31 +88,31 @@ resource "aws_security_group" "ExfilTracer" {
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = 445
         to_port = 445
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = 3389
         to_port = 3389
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = 10000
         to_port = 10100
         protocol = "tcp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     ingress {
         from_port = -1
         to_port = -1
         protocol = "icmp"
-        cidr_blocks = ["${var.IP_Address}"]
+        cidr_blocks = ["${var.ip_Address}"]
     }
     egress {
         from_port = 0
@@ -124,7 +124,7 @@ resource "aws_security_group" "ExfilTracer" {
 
 resource "aws_route53_record" "ExfilTracer" {
     zone_id = data.aws_route53_zone.selected.zone_id
-    name    = "exfiltracer${var.ClientID}.${var.Root_domain}"
+    name    = "exfiltracer${var.client_ID}.${var.Root_domain}"
     type    = "A"
     ttl     = "300"
     records = [aws_instance.ExfilTracer.public_ip]
@@ -136,6 +136,6 @@ resource "aws_route53_record" "dnsexfilns" {
     name    = "ns.exfiltracer.${var.Root_domain}"
     type    = "NS"
     ttl     = "300"
-    records = ["ns.exfiltracer${var.ClientID}.${var.Root_domain}"]
+    records = ["ns.exfiltracer${var.client_ID}.${var.Root_domain}"]
     depends_on = [aws_route53_record.ExfilTracer]
 }
