@@ -15,6 +15,11 @@
 
 ExfilTracer creates a cloud service to facilitate easy testing of data exfiltration methods during a penetration test. This project utilizes Ansible & Terraform to build a temporary disposable cloud server and DNS records in AWS. Where possible services will be secured using a password specified at run time along with IP address whitelisting on the AWS side if desired. Encryption has not been implemented and likely will not be. 
 
+The created resources will be
+
+- 1 x EC2 instance (Unless specified by parameter default size is t2.micro)
+- 1 x 
+
 ------
 
 **Don’t send sensitive data using this server, Generate some random junk files and send those as a proof of concept.** 
@@ -37,6 +42,7 @@ All testing was completed using a default installation of Kali version 2024.2.
 
 - AWS Account
 - AWS Hosted Domain Name
+- SSH Private / Public key pair. Use `ssh-keygen` or something similar to create. Note if not using the default path this will have to be specified using the `public_key_path` & `private_key_path` parameters listed below.
 
 ### Setup
 
@@ -98,7 +104,15 @@ terraform apply -var="root_domain=hulkgosmash.com" -auto-approve
 4. Deploy server using Terraform (Using all parameters). 
 
 ```bash
-terraform apply -var="client_ID=test" -var="instance_type=t2.small" -var="ip_Address=1.1.1.1/32" -var="password=ZtHu@4LskWLne(!r" -var="public_key_path=/home/kali/.ssh/id_rsa.pub" -var="private_key_path=/home/kali/.ssh/id_rsa" -var="region=us-east-1" -var="root_domain=hulkgosmash.com"
+terraform apply -var="client_ID=test" -var="instance_type=t2.small" -var="ip_Address=1.1.1.1/32" -var="password=ZtHu@4LskWLne(!r" -var="public_key_path=/home/kali/.ssh/id_rsa.pub" -var="private_key_path=/home/kali/.ssh/id_rsa" -var="region=us-east-1" -var="root_domain=hulkgosmash.com" -auto-approve
+```
+
+### Removal / Destroy Procedure
+
+This will remove all resources (EC2 instance / DNS records)
+
+```bash
+terraform destroy -auto-approve
 ```
 
 ### Parameters
