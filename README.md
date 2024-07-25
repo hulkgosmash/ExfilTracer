@@ -10,8 +10,6 @@
 - [Testing Exfiltration](#testing-exfiltration)
   - [Create Exfiltration Data](#create-exfiltration-data)
   - [Connect to the server](#connect-to-the-server)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Summary
 

@@ -10,7 +10,7 @@
     - role: smb_server
     - role: smtp_server
 
-  tasks:
-    - name: Print the command line variable
-      ansible.builtin.debug:
-        msg: "The password specified is: {{ password }}"
+#  tasks:
+#    - name: Print the command line variable
+#      ansible.builtin.debug:
+#        msg: "The password specified is: {{ password }}"

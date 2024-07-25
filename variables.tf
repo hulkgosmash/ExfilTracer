@@ -13,9 +13,9 @@ variable "ip_Address" {
     description = "IP Address to restrict traffic to"
 }
 
-variable "region" {
-    default = "ap-southeast-2"
-    description = "AWS Region"
+variable "password" {
+    default = "P@ssw0rd"
+    description = "Password for all of the protocols / services"
 }
 
 variable "public_key_path" {
@@ -30,17 +30,12 @@ variable "private_key_path" {
   default     = "/home/kali/.ssh/id_rsa"
 }
 
-variable "Root_domain" {
-    default = "hulkgosmash.com"
-    description = "Root Domain"
+variable "region" {
+    default = "ap-southeast-2"
+    description = "AWS Region"
 }
 
-#variable "AMI" {
-#    default = "ami-076fe60835f136dc9"
-#    description = "AMI ID for your region (Only tested with Ubuntu 22.04 64-bit(x86)"
-#}
-
-variable "Password" {
-    default = "P@ssw0rd"
-    description = "Password for all of the protocols / services"
+variable "root_domain" {
+    default = "hulkgosmash.com"
+    description = "Root Domain"
 }

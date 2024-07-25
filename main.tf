@@ -1,5 +1,5 @@
 data "aws_route53_zone" "selected" {
-  name = var.Root_domain
+  name = var.root_domain
 }
 
 data "local_file" "public_key" {
@@ -45,7 +45,7 @@ resource "aws_instance" "ExfilTracer" {
             "sudo apt update",
             "sudo apt install ansible -y",
             "git clone https://github.com/hulkgosmash/ExfilTracer.git",
-            "ansible-playbook ExfilTracer/ansible/main.yaml -e password='${var.Password}'",
+            "ansible-playbook ExfilTracer/ansible/main.yaml -e password='${var.password}'",
         ]
     }
     tags                          = {
@@ -124,7 +124,7 @@ resource "aws_security_group" "ExfilTracer" {
 
 resource "aws_route53_record" "ExfilTracer" {
     zone_id = data.aws_route53_zone.selected.zone_id
-    name    = "exfiltracer${var.client_ID}.${var.Root_domain}"
+    name    = "exfiltracer${var.client_ID}.${var.root_domain}"
     type    = "A"
     ttl     = "300"
     records = [aws_instance.ExfilTracer.public_ip]
@@ -133,9 +133,9 @@ resource "aws_route53_record" "ExfilTracer" {
 
 resource "aws_route53_record" "dnsexfilns" {
     zone_id = data.aws_route53_zone.selected.zone_id
-    name    = "ns.exfiltracer.${var.Root_domain}"
+    name    = "ns.exfiltracer.${var.root_domain}"
     type    = "NS"
     ttl     = "300"
-    records = ["ns.exfiltracer${var.client_ID}.${var.Root_domain}"]
+    records = ["ns.exfiltracer${var.client_ID}.${var.root_domain}"]
     depends_on = [aws_route53_record.ExfilTracer]
 }
