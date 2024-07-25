@@ -88,7 +88,7 @@ terraform init
 3. Deploy server using Terraform (Minimum parameters).
 
 ```bash
-terraform apply -var="root_domain=hulkgosmash.com"
+terraform apply -var="root_domain=hulkgosmash.com" -auto-approve
 ```
 
 4. Deploy server using Terraform (Using all parameters). 
