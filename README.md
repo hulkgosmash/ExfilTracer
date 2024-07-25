@@ -83,6 +83,8 @@ cd ExfilTracer
 terraform init
 ```
 
+![Description of the image](images/5.png)
+
 3. Deploy server using Terraform (Minimum parameters).
 
 ```bash
