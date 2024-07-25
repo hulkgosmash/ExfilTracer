@@ -104,7 +104,7 @@ terraform apply -var="root_domain=hulkgosmash.com" -auto-approve
 4. Deploy server using Terraform (Using all parameters). 
 
 ```bash
-terraform apply -var="client_ID=test" -var="instance_type=t2.small" -var="ip_Address=1.1.1.1/32" -var="password=ZtHu@4LskWLne(!r" -var="public_key_path=/home/kali/.ssh/id_rsa.pub" -var="private_key_path=/home/kali/.ssh/id_rsa" -var="region=us-east-1" -var="root_domain=hulkgosmash.com" -auto-approve
+terraform apply -var="client_ID=test" -var="instance_type=t2.small" -var="ip_Address=1.1.1.1/32" -var="password=ZtHu@4LskWLner" -var="public_key_path=/home/kali/.ssh/id_rsa.pub" -var="private_key_path=/home/kali/.ssh/id_rsa" -var="region=us-east-1" -var="root_domain=hulkgosmash.com" -auto-approve
 ```
 
 ### Removal / Destroy Procedure
@@ -114,6 +114,8 @@ This will remove all resources (EC2 instance / DNS records)
 ```bash
 terraform destroy -auto-approve
 ```
+
+![Description of the image](images/8.png)
 
 ### Parameters
 
