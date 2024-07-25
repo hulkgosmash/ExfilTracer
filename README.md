@@ -93,6 +93,8 @@ terraform apply -var="root_domain=hulkgosmash.com" -auto-approve
 
 ![Description of the image](images/6.png)
 
+![Description of the image](images/7.png)
+
 4. Deploy server using Terraform (Using all parameters). 
 
 ```bash
