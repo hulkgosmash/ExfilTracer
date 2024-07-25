@@ -184,6 +184,7 @@ terraform destroy -auto-approve
 - Mandatory: `Yes`
 
 ## Testing Exfiltration
+Testing will require the use of PowerShell for many protocols. All of the referenced scripts will be provided inline in this readme as well and being stored in the /scripts sub-directory. 
 
 ### Create Exfiltration Data
 
