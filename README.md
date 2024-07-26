@@ -18,7 +18,9 @@ ExfilTracer creates a cloud service to facilitate easy testing of data exfiltrat
 The created resources will be
 
 - 1 x EC2 instance (Unless specified by parameter default size is t2.micro)
-- 1 x 
+- 1 x Security Group (With ports opened to allow exfiltration service can be restricted to a single IP address with a parameter)
+- 1 x DNS A record in the root domain specified pointing to the public IP address of the EC2 instance. This follows the pattern exfiltracer`client_ID`.`root_domain`. So in the given example with my domain `hulkgosmash.com` and the default value of `123` for the client_ID this will be `exfiltracer123.hulkgosmash.com`
+- 1 x DNS NS record pointing to the previous A record. 
 
 ------
 

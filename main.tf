@@ -131,9 +131,9 @@ resource "aws_route53_record" "ExfilTracer" {
     depends_on = [aws_instance.ExfilTracer]
 }
 
-resource "aws_route53_record" "dnsexfilns" {
+resource "aws_route53_record" "ExfilTracer" {
     zone_id = data.aws_route53_zone.selected.zone_id
-    name    = "ns.exfiltracer.${var.root_domain}"
+    name    = "ns.exfiltracer${var.client_ID}.${var.root_domain}"
     type    = "NS"
     ttl     = "300"
     records = ["ns.exfiltracer${var.client_ID}.${var.root_domain}"]
