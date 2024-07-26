@@ -315,3 +315,5 @@ Back on the server locate the file in the `/var/www/html/uploads` directory it w
 ls /var/www/html/uploads
 sha256sum /var/www/html/uploads/66a37d9f055ab-exfil.txt
 ```
+
+![Description of the image](images/28.png)
