@@ -305,3 +305,7 @@ Select the `exfil.txt` file from the user profile directory and once the file ha
 
 ![Description of the image](images/27.png)
 
+You should see confirmation that the file has been uploaded. 
+
+![Description of the image](images/27.png)
+
