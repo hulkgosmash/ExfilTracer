@@ -12,6 +12,7 @@
   - [Connect to the server](#connect-to-the-server)
   - [DNS Exfiltration](#dns-exfiltration)
   - [FTP Exfiltration](#ftp-exfiltration)
+  - [HTTP Exfiltration](#http-exfiltration)
 
 ## Summary
 
