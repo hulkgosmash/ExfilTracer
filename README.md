@@ -381,4 +381,8 @@ Click on `Connect`.
 
 When prompted click on `Connect`.
 
+![Description of the image](images/41.png)
 
+Click on `Yes`.
+
+![Description of the image](images/42.png)
