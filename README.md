@@ -213,11 +213,24 @@ Get-FileHash -Path $filePath
 
 ### Connect to the server
 
-Using the output from the the terraform build command we can find the required command to connect to the server. 
+Using the output from the the terraform build command we can find the required command to connect to the server. Enter yes to continue connecting then elevate to the root account. 
 
 ![Description of the image](images/11.png)
 
-```
+```bash
 ssh ubuntu@exfiltracer123.hulkgosmash.com
+yes
+sudo su
 ```
 
+![Description of the image](images/12.png)
+
+### DNS Exfiltration
+
+On the server run the below command. 
+
+```bash
+tcpdump -n udp port 53 -i any | tee raw_output.txt
+```
+
+![Description of the image](images/13.png)
