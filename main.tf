@@ -137,5 +137,5 @@ resource "aws_route53_record" "ExfilTracer_NS" {
     type    = "NS"
     ttl     = "300"
     records = ["ns.exfiltracer${var.client_ID}.${var.root_domain}"]
-    depends_on = [aws_route53_record.ExfilTracer]
+    depends_on = [aws_route53_record.ExfilTracer_A]
 }
