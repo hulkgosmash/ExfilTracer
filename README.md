@@ -28,7 +28,7 @@ The created resources will be
 
 ------
 
-**Don’t send sensitive data using this server, Generate some random junk files and send those as a proof of concept.** 
+**Don’t send sensitive data using this server, generate some random junk files and send those as a proof of concept.** 
 
 ------
 
@@ -320,3 +320,8 @@ sha256sum /var/www/html/uploads/66a37d9f055ab-exfil.txt
 ![Description of the image](images/29.png)
 
 ### ICMP Exfiltration
+
+On the client import copy and paste the function listed here https://github.com/icyguider/ICMP-TransferTools/blob/main/Invoke-IcmpUpload.ps1 into PowerShell ISE. Then click on the green play button. 
+
+![Description of the image](images/30.png)
+
