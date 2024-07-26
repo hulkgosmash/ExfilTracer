@@ -372,3 +372,8 @@ Click on the `Local Resources` tab then ensure the `Printers` option is deselect
 ![Description of the image](images/37.png)
 
 Expand the Drives node and ensure that the option `Local Disk (C:)` is selected. Also ensure that the options `Smart cards or Windows Hello for Business` & `WebAuth (Windows Hello or security keys)` are both deselected if they exist.
+
+![Description of the image](images/38.png)
+
+
+![Description of the image](images/39.png)
