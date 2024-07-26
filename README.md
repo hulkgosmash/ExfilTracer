@@ -286,3 +286,11 @@ Left click on the FTP tab then right click and select the `paste` icon.
 You should then see that the file has been uploaded to the FTP service of the AWS EC2 instance. 
 
 ![Description of the image](images/24.png)
+
+We can then use the below code to verify the file on the server. 
+
+```bash
+sha256sum /home/ftpuser/exfil.txt
+```
+
+![Description of the image](images/25.png)
