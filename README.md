@@ -11,6 +11,7 @@
   - [Create Exfiltration Data](#create-exfiltration-data)
   - [Connect to the server](#connect-to-the-server)
   - [DNS Exfiltration](#dns-exfiltration)
+  - [FTP Exfiltration](#ftp-exfiltration)
 
 ## Summary
 
@@ -255,3 +256,7 @@ cat raw_output.txt | cut -d " " -f13 | cut -d "." -f1,2 | grep '^[0-9]' | tr '[:
 ```
 
 ![Description of the image](images/17.png)
+
+### FTP Exfiltration
+
+FTP to a public site may be blocked by default on Windows. If you have Administrator access you can click Allow access on the prompt below. Otherwise this method may not be available unless there is already a firewall allowing it.
