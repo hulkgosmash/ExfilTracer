@@ -282,3 +282,7 @@ Navigate to the user profile directory then right click on the `exfil.txt` file 
 Left click on the FTP tab then right click and select the `paste` icon. 
 
 ![Description of the image](images/23.png)
+
+You should then see that the file has been uploaded to the FTP service of the AWS EC2 instance. 
+
+![Description of the image](images/24.png)
