@@ -13,6 +13,7 @@
   - [DNS Exfiltration](#dns-exfiltration)
   - [FTP Exfiltration](#ftp-exfiltration)
   - [HTTP Exfiltration](#http-exfiltration)
+  - [ICMP Exfiltration](#icmp-exfiltration)
 
 ## Summary
 
@@ -317,3 +318,5 @@ sha256sum /var/www/html/uploads/66a37d9f055ab-exfil.txt
 ```
 
 ![Description of the image](images/29.png)
+
+### ICMP Exfiltration
