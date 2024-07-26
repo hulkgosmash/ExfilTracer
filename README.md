@@ -266,7 +266,7 @@ Open File Explorer and in the address bar type in `ftp://` followed by the domai
 When prompted enter the username as `ftpuser` and if you specified a password as a terraform it will be this otherwise it will be the default value of `P@ssw0rd`. 
 
 ![Description of the image](images/19.png)
-FTP to a public site may be blocked by default on Windows. 
 
+FTP to a public FTP site may be blocked by default on Windows. If you have Administrator access you can click Allow access on the prompt below. 
 
-If you have Administrator access you can click Allow access on the prompt below. Otherwise this method may not be available unless there is already a firewall allowing it.
+![Description of the image](images/20.png)
