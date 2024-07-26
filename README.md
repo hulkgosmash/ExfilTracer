@@ -186,11 +186,11 @@ terraform destroy -auto-approve
 - Mandatory: `Yes`
 
 ## Testing Exfiltration
-Testing will require the use of PowerShell for many protocols. All of the referenced scripts will be provided inline in this readme as well and being stored in the /scripts sub-directory. 
+Testing will require the use of PowerShell for many protocols. All of the referenced scripts will be provided inline in this readme as well and being stored in the /scripts sub-directory. All testing examples shown below were performed on Windows 11 22H2 with all updates installed as of 26/07/2024. 
 
 ### Create Exfiltration Data
 
-Copy and paste the below script into a PowerShell window to generate some random data to be exfiltrated. The script will also generate a hash so that we can verify the consistency of the data after it has been exfiltrated. 
+Copy and paste the below script into a PowerShell window to generate some random data to be exfiltrated. The script will also generate a hash so that we can verify the consistency of the data after it has been exfiltrated. In this example the file `exfil.txt` will be created in the root directory of the current user profile which is the directory PowerShell will likely load by default. 
 
 ```powershell
 $base64String = ''
@@ -209,6 +209,15 @@ Set-Content -Path $filePath -Value $base64String -Encoding ASCII
 # Get file hash
 Get-FileHash -Path $filePath
 ```
+![Description of the image](images/10.png)
 
 ### Connect to the server
+
+Using the output from the the terraform build command we can find the required command to connect to the server. 
+
+![Description of the image](images/11.png)
+
+```
+ssh ubuntu@exfiltracer123.hulkgosmash.com
+```
 
