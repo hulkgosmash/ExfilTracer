@@ -243,3 +243,15 @@ On the client to be tested open PowerShell ISE and copy the contents of the scri
 One you have updated the `$domain` variable click on the green play button to execute the script. 
 
 ![Description of the image](images/15.png)
+
+On the server you should see a bunch of DNS requests coming through wait a few minutes to ensure that it has stopped then hit `ctrl+c`. 
+
+![Description of the image](images/16.png)
+
+Run the below command on the server to recover the file. 
+
+```bash
+cat raw_output.txt | cut -d " " -f13 | cut -d "." -f1,2 | grep '^[0-9]' | tr '[:lower:]' '[:upper:]' | sort -u | cut -d "." -f2 | xxd -r -p > dns_exfil.txt
+```
+
+![Description of the image](images/17.png)
