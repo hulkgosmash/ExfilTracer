@@ -234,3 +234,11 @@ tcpdump -n udp port 53 -i any | tee raw_output.txt
 ```
 
 ![Description of the image](images/13.png)
+
+On the client to be tested open PowerShell ISE and copy the contents of the script `DNS_Exfiltration.ps1` located in the scripts folder of this repository. Take note of the `$domain` variable as this will need to be updated to match the value shown in the output of the terraform command. 
+
+![Description of the image](images/14.png)
+
+One you have updated the `$domain` variable click on the green play button to execute the script. 
+
+![Description of the image](images/15.png)
