@@ -307,7 +307,7 @@ Select the `exfil.txt` file from the user profile directory and once the file ha
 
 You should see confirmation that the file has been uploaded. 
 
-![Description of the image](images/27.png)
+![Description of the image](images/28.png)
 
 Back on the server locate the file in the `/var/www/html/uploads` directory it will have been renamed with a random value appended to the front. The verify the file has been uploaded using the `sha256sum` command. 
 
@@ -316,4 +316,4 @@ ls /var/www/html/uploads
 sha256sum /var/www/html/uploads/66a37d9f055ab-exfil.txt
 ```
 
-![Description of the image](images/28.png)
+![Description of the image](images/29.png)
