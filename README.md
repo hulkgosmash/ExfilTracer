@@ -10,6 +10,7 @@
 - [Testing Exfiltration](#testing-exfiltration)
   - [Create Exfiltration Data](#create-exfiltration-data)
   - [Connect to the server](#connect-to-the-server)
+  - [DNS Exfiltration](#dns-exfiltration)
 
 ## Summary
 
