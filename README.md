@@ -297,6 +297,11 @@ sha256sum /home/ftpuser/exfil.txt
 ![Description of the image](images/25.png)
 
 ### HTTP Exfiltration
-Open a web browser and navigate to the URL of the subdomain that was created during deployment. Click on the Choose File button.
+Open a web browser and navigate to the URL of the subdomain that was created during deployment. Click on the `Choose File` button.
 
 ![Description of the image](images/26.png)
+
+Select the `exfil.txt` file from the user profile directory and once the file has been selected click on the `Upload File` button. 
+
+![Description of the image](images/27.png)
+
