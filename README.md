@@ -259,4 +259,11 @@ cat raw_output.txt | cut -d " " -f13 | cut -d "." -f1,2 | grep '^[0-9]' | tr '[:
 
 ### FTP Exfiltration
 
-FTP to a public site may be blocked by default on Windows. If you have Administrator access you can click Allow access on the prompt below. Otherwise this method may not be available unless there is already a firewall allowing it.
+Open File Explorer and in the address bar type in `ftp://` followed by the domain as shown in the output from terraform. 
+
+![Description of the image](images/18.png)
+
+FTP to a public site may be blocked by default on Windows. 
+
+
+If you have Administrator access you can click Allow access on the prompt below. Otherwise this method may not be available unless there is already a firewall allowing it.
