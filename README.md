@@ -14,6 +14,7 @@
   - [FTP Exfiltration](#ftp-exfiltration)
   - [HTTP Exfiltration](#http-exfiltration)
   - [ICMP Exfiltration](#icmp-exfiltration)
+  - [RDP Exfiltration](#rdp-exfiltration)
 
 ## Summary
 
@@ -356,3 +357,9 @@ sha256sum exfil.txt
 ```
 
 ![Description of the image](images/34.png)
+
+### RDP Exfiltration
+On the client open up the remote desktop client by opening the run dialog box and typing `mstsc`. 
+
+![Description of the image](images/34.png)
+
