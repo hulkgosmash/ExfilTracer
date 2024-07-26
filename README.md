@@ -391,3 +391,6 @@ When prompted enter the username of `rdpuser` and if you specified a password as
 
 ![Description of the image](images/43.png)
 
+Once the desktop loads click on the `Home` button on the desktop. Once the explorer window opens under devices click on the one that starts with `thinkclient_dr…`. Then navigate through the file system to find the `exil.txt` file that was created earlier. Then right click on the file and select `Copy`.
+
+![Description of the image](images/44.png)
