@@ -309,3 +309,9 @@ You should see confirmation that the file has been uploaded.
 
 ![Description of the image](images/27.png)
 
+Back on the server locate the file in the `/var/www/html/uploads` directory it will have been renamed with a random value appended to the front. The verify the file has been uploaded using the `sha256sum` command. 
+
+```bash
+ls /var/www/html/uploads
+sha256sum /var/www/html/uploads/666acb81efea8-exfil.txt
+```
