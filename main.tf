@@ -122,7 +122,7 @@ resource "aws_security_group" "ExfilTracer" {
     }
 }
 
-resource "aws_route53_record" "ExfilTracer" {
+resource "aws_route53_record" "ExfilTracer_A" {
     zone_id = data.aws_route53_zone.selected.zone_id
     name    = "exfiltracer${var.client_ID}.${var.root_domain}"
     type    = "A"
@@ -131,7 +131,7 @@ resource "aws_route53_record" "ExfilTracer" {
     depends_on = [aws_instance.ExfilTracer]
 }
 
-resource "aws_route53_record" "ExfilTracer" {
+resource "aws_route53_record" "ExfilTracer_NS" {
     zone_id = data.aws_route53_zone.selected.zone_id
     name    = "ns.exfiltracer${var.client_ID}.${var.root_domain}"
     type    = "NS"
