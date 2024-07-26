@@ -270,3 +270,11 @@ When prompted enter the username as `ftpuser` and if you specified a password as
 FTP to a public FTP site may be blocked by default on Windows. If you have Administrator access you can click Allow access on the prompt below. 
 
 ![Description of the image](images/20.png)
+
+Click on the `+` icon in the open File Explorer window to open an additional tab. 
+
+![Description of the image](images/21.png)
+
+Navigate to the user profile directory then right click on the `exfil.txt` file and select the copy icon. 
+
+![Description of the image](images/22.png)
