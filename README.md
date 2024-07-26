@@ -278,3 +278,7 @@ Click on the `+` icon in the open File Explorer window to open an additional tab
 Navigate to the user profile directory then right click on the `exfil.txt` file and select the copy icon. 
 
 ![Description of the image](images/22.png)
+
+Left click on the FTP tab then right click and select the `paste` icon. 
+
+![Description of the image](images/23.png)
