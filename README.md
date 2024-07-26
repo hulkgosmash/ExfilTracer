@@ -361,5 +361,5 @@ sha256sum exfil.txt
 ### RDP Exfiltration
 On the client open up the remote desktop client by opening the run dialog box and typing `mstsc`. 
 
-![Description of the image](images/34.png)
+![Description of the image](images/35.png)
 
