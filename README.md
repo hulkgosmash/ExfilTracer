@@ -385,6 +385,9 @@ sha256sum exfil.txt
 ![Description of the image](images/34.png)
 
 ### RDP Exfiltration
+
+**Note RDP can be somewhat unrelaibe on the linux server. If it locks up try rebooting the server and it may be required to disable audio settings on the RDP client** 
+
 On the client open up the remote desktop client by opening the run dialog box and typing `mstsc`. 
 
 ![Description of the image](images/35.png)
@@ -498,6 +501,6 @@ sha256sum exfil.txt
 ## References
 A big thanks to the below blogs & projects and any others I have forgotten to mention for sharing your work so that others may use it and build upon it for their own projects. 
 
-https://abawazeeer.medium.com/powershell-data-ex-filtration-over-dns-oob-9efcd5ed249f
-https://medium.com/@meshal_/dns-exfiltration-by-living-of-f-the-land-technique-w-o-poweshell-bd50bd1a1918
-https://github.com/icyguider/ICMP-TransferTools/
+* https://abawazeeer.medium.com/powershell-data-ex-filtration-over-dns-oob-9efcd5ed249f
+* https://medium.com/@meshal_/dns-exfiltration-by-living-of-f-the-land-technique-w-o-poweshell-bd50bd1a1918
+* https://github.com/icyguider/ICMP-TransferTools/
