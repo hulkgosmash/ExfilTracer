@@ -20,7 +20,7 @@
 - [References](#references)
 ## Summary
 
-ExfilTracer creates a cloud service to facilitate easy testing of data exfiltration methods during a penetration test. This project utilizes Ansible & Terraform to build a temporary disposable cloud server and DNS records in AWS. Where possible services will be secured using a password specified at run time along with IP address whitelisting on the AWS side if desired. Encryption for those protocols that don't natively support it has not been implemented and likely will not be. 
+ExfilTracer creates a cloud service to facilitate easy testing of data exfiltration methods during a penetration test. This project utilizes Ansible & Terraform to build a temporary disposable EC2 cloud server and DNS records in AWS. Where possible services will be secured using a password specified at run time along with IP address whitelisting on the AWS side if desired. Encryption for those protocols that don't natively support it has not been implemented and likely will not be. 
 
 The created resources will be
 
@@ -112,9 +112,10 @@ terraform apply -var="root_domain=hulkgosmash.com" -auto-approve
 
 4. Deploy server using Terraform (Using all parameters). 
 
-```bash
+
+````bash
 terraform apply -var="client_ID=test" -var="instance_type=t2.small" -var="ip_Address=1.1.1.1/32" -var="password=ZtHu@4LskWLner" -var="public_key_path=/home/kali/.ssh/id_rsa.pub" -var="private_key_path=/home/kali/.ssh/id_rsa" -var="region=us-east-1" -var="root_domain=hulkgosmash.com" -auto-approve
-```
+````
 
 ### Removal / Destroy Procedure
 
