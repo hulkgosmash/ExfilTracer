@@ -17,7 +17,7 @@
   - [RDP Exfiltration](#rdp-exfiltration)
   - [SMB Exfiltration](#smb-exfiltration)
   - [SMTP Exfiltration](#smtp-exfiltration)
-
+- [References](#references)
 ## Summary
 
 ExfilTracer creates a cloud service to facilitate easy testing of data exfiltration methods during a penetration test. This project utilizes Ansible & Terraform to build a temporary disposable cloud server and DNS records in AWS. Where possible services will be secured using a password specified at run time along with IP address whitelisting on the AWS side if desired. Encryption for those protocols that don't natively support it has not been implemented and likely will not be. 
@@ -452,3 +452,28 @@ Send-MailMessage -SmtpServer $SMTPServer `
 ```
 
 ![Description of the image](images/50.png)
+
+On the server firstly verify that the mail has been received. 
+
+```bash
+cat /var/mail/root
+```
+
+![Description of the image](images/51.png)
+
+Then extract the file and verify the hash. 
+
+```bash
+cd /var/mail
+ripmime -i root -d .
+sha256sum exfil.txt
+```
+
+![Description of the image](images/52.png)
+
+## References
+A big thanks to the below blogs & projects and any others I have forgotten to mention for sharing your work so that others may use it and build upon it for their own projects. 
+
+https://abawazeeer.medium.com/powershell-data-ex-filtration-over-dns-oob-9efcd5ed249f
+https://medium.com/@meshal_/dns-exfiltration-by-living-of-f-the-land-technique-w-o-poweshell-bd50bd1a1918
+https://github.com/icyguider/ICMP-TransferTools/
