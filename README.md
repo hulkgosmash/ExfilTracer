@@ -395,6 +395,8 @@ Once the desktop loads click on the `Home` button on the desktop. Once the explo
 
 ![Description of the image](images/44.png)
 
+Right click on the Desktop and select Paste.
+
 The file should then be shown on the desktop. 
 
 ![Description of the image](images/45.png)
