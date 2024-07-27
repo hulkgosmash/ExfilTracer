@@ -397,6 +397,8 @@ Once the desktop loads click on the `Home` button on the desktop. Once the explo
 
 Right click on the Desktop and select Paste.
 
+![Description of the image](images/45.png)
+
 The file should then be shown on the desktop. 
 
-![Description of the image](images/45.png)
+![Description of the image](images/46.png)
