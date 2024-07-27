@@ -258,10 +258,18 @@ On the server you should see a bunch of DNS requests coming through wait a few m
 Run the below command on the server to recover the file. 
 
 ```bash
-cat raw_output.txt | cut -d " " -f13 | cut -d "." -f1,2 | grep '^[0-9]' | tr '[:lower:]' '[:upper:]' | sort -u | cut -d "." -f2 | xxd -r -p > dns_exfil.txt
+grep -oP '[0-9]{5}\.[0-9a-f]+\.[^.]*\.[a-z]+'  raw_output.txt | sort -u | cut -d "." -f2 | xxd -r -p > dns_exfil.txt
 ```
 
 ![Description of the image](images/17.png)
+
+Verify the hash
+
+```bash
+sha256sum dns_exfil.txt
+```
+
+![Description of the image](images/53.png)
 
 ### FTP Exfiltration
 
