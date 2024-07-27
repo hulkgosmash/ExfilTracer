@@ -402,3 +402,11 @@ Right click on the Desktop and select Paste.
 The file should then be shown on the desktop. 
 
 ![Description of the image](images/46.png)
+
+On the server verify the hash. 
+
+```bash
+sha256sum /home/rdpuser/Desktop/exfil.txt
+```
+
+![Description of the image](images/47.png)
