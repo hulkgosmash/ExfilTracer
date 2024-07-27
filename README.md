@@ -221,7 +221,7 @@ Get-FileHash -Path $filePath
 
 ### Connect to the server
 
-Using the output from the the terraform build command we can find the required command to connect to the server. Enter yes to continue connecting then elevate to the root account. 
+Using the output from the Terraform build command we can find the required command to connect to the server. Enter yes to continue connecting then elevate to the root account. 
 
 ![Description of the image](images/11.png)
 
@@ -386,7 +386,7 @@ sha256sum exfil.txt
 
 ### RDP Exfiltration
 
-**Note RDP can be somewhat unrelaibe on the linux server. If it locks up try rebooting the server and it may be required to disable audio settings on the RDP client** 
+**Note RDP can be somewhat unreliabe on the linux server. If it locks up try rebooting the server and it may be required to disable audio settings on the RDP client** 
 
 On the client open up the remote desktop client by opening the run dialog box and typing `mstsc`. 
 
