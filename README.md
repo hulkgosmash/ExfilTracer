@@ -150,7 +150,7 @@ terraform destroy -auto-approve
 - Name: `ip_Address`
 - Type: `String`
 - Default: `0.0.0.0/0`
-- Description: IP Address to restrict traffic to. If not specified the ExfilTracer server will accept traffic from all IP addresses. To restrict traffic to a single IP Address set the value to something like `1.1.1.1/32` Where `1.1.1.1` would be the external IP Address of the server to be tested. **Note: ports 22 (SSH) & 53 (DNS) are not subject to the restrictions.** 
+- Description: IP Address to restrict traffic to. If not specified the ExfilTracer server will accept traffic from all IP addresses. To restrict traffic to a single IP Address set the value to something like `1.1.1.1/32` Where `1.1.1.1` would be the external IP Address of the system to be tested. **Note: ports 22 (SSH) & 53 (DNS) are not subject to the restrictions.** 
 - Mandatory: `No`
 
 **password**
